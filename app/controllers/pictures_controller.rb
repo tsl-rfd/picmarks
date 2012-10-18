@@ -1,31 +1,25 @@
 class PicturesController < ApplicationController
+  def new
+  end
+  
   def index
-    @photo_urls = [
-      "http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png",
-      "http://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
-      "http://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
-      "http://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-      "http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg",
-      "http://upload.wikimedia.org/wikipedia/en/1/1c/CoffeeScript-logo.png",
-      "http://upload.wikimedia.org/wikipedia/commons/3/3b/Haml_1-5_logo.png"
-      ]
+    if params[:url]  
+      p = Picture.new
+      p.url = params[:url]
+      p.save
+    end
+    @pictures = Picture.all
     
-    render 'index'
   end
   
   def show
-    @photo_urls = [
-      "http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png",
-      "http://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
-      "http://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
-      "http://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-      "http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg",
-      "http://upload.wikimedia.org/wikipedia/en/1/1c/CoffeeScript-logo.png",
-      "http://upload.wikimedia.org/wikipedia/commons/3/3b/Haml_1-5_logo.png"
-      ]
+    # This was our old code from when we had hardcoded data.
+    # id_number = params[:id].to_i
+    # @url = @photo_urls[id_number - 1]
     
-    id_number = params[:id].to_i
+    # Use the Picture.find_by_id method to make the show action work.
+    # You may also have to update the view template.
     
-    @url = @photo_urls[id_number - 1]
+    @pic # = ???
   end
 end

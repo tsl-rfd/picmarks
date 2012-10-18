@@ -1,5 +1,8 @@
 <ul>
-<% @photo_urls.each do |url| %>
-  <li><img width="200" src="<%= url %>"></li>
+<% @pictures.each do |pic| %>
+  <li>
+    <img width="200" src="<%= pic.url %>">
+    <p><%= pic.note %></p>
+  </li>
 <% end %>
 </ul>
