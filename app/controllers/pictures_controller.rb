@@ -1,36 +1,31 @@
 class PicturesController < ApplicationController
-  
-  # Support /pictures
-  # Show a list of pictures
-  # by creating an array in your controller
-  # and creating a view template that uses the array
-  # to generate a list of images.
-  
   def index
-    @photo_urls = ["http://static.nfl.com/static/content/public/photo/2012/10/16/0ap1000000081197.jpg", "http://static.nfl.com/static/content/public/photo/2012/10/14/0ap1000000080282.jpg", "http://www.trbimg.com/img-507d9f92/turbine/chi-transcript-nhls-bettman-on-latest-proposal-20121016/187/16x9"]
+    @photo_urls = [
+      "http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png",
+      "http://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
+      "http://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
+      "http://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+      "http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg",
+      "http://upload.wikimedia.org/wikipedia/en/1/1c/CoffeeScript-logo.png",
+      "http://upload.wikimedia.org/wikipedia/commons/3/3b/Haml_1-5_logo.png"
+      ]
     
     render 'index'
   end
   
-  
   def show
-    @photo_urls = ["http://static.nfl.com/static/content/public/photo/2012/10/16/0ap1000000081197.jpg", "http://static.nfl.com/static/content/public/photo/2012/10/14/0ap1000000080282.jpg", "http://www.trbimg.com/img-507d9f92/turbine/chi-transcript-nhls-bettman-on-latest-proposal-20121016/187/16x9"]
-    
-    # params = {"id"=>"1"}
+    @photo_urls = [
+      "http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png",
+      "http://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png",
+      "http://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
+      "http://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+      "http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg",
+      "http://upload.wikimedia.org/wikipedia/en/1/1c/CoffeeScript-logo.png",
+      "http://upload.wikimedia.org/wikipedia/commons/3/3b/Haml_1-5_logo.png"
+      ]
     
     id_number = params[:id].to_i
     
     @url = @photo_urls[id_number - 1]
   end
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 end
