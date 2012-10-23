@@ -1,5 +1,20 @@
 <h1>Add a New Picture</h1>
 
-<form action="/pictures" method="get">
-  URL: <input type="text" name="url">
-</form>
+<%= form_tag "/pictures", "method" => "post" do %>
+
+  <%= label_tag "url" %> <%= text_field_tag "url" %>
+  <%= label_tag "note" %> <%= text_field_tag "note" %>
+
+  <%= submit_tag "Save Picture"%>
+  
+<% end %>
+
+<!-- <form action="/pictures" method="post">
+  <fieldset>
+    <label>URL:</label><input type="text" name="url">
+  </fieldset>
+  <fieldset>
+    <label>Note:</label><input type="text" name="note">
+  </fieldset>
+  <input type="submit" value="Submit">
+</form> -->

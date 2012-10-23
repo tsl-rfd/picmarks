@@ -2,7 +2,10 @@
 <% @pictures.each do |pic| %>
   <li>
     <img width="200" src="<%= pic.url %>">
-    <p><%= pic.note %></p>
+    <p>
+      <%= link_to pic.note, "/pictures/#{pic.id}" %>
+      <%= link_to "Toast", "/pictures/#{pic.id}", :method => :delete %>
+    </p>
   </li>
 <% end %>
 </ul>
