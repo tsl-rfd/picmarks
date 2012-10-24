@@ -1,4 +1,17 @@
 class PicturesController < ApplicationController
+  def edit
+    @picture = Picture.find_by_id(params[:id])
+  end
+  
+  def update
+    p = Picture.find_by_id(params[:id])
+    p.url = params[:url]
+    p.note = params[:note]
+    p.save
+    
+    redirect_to "/pictures/#{p.id}"
+  end
+  
   def new
   end
   
@@ -7,12 +20,14 @@ class PicturesController < ApplicationController
     p.url = params[:url]
     p.note = params[:note]
     p.save
+    
     redirect_to "/pictures"
   end
   
   def destroy
     p = Picture.find_by_id(params[:id])
     p.destroy
+    
     redirect_to "/pictures"
   end
   
@@ -21,6 +36,6 @@ class PicturesController < ApplicationController
   end
   
   def show
-    @pic = Picture.find_by_id(params[:id])
+    @picture = Picture.find_by_id(params[:id])
   end
 end
