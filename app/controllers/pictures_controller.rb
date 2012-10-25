@@ -4,37 +4,50 @@ class PicturesController < ApplicationController
   end
   
   def update
-    p = Picture.find_by_id(params[:id])
-    p.url = params[:url]
-    p.note = params[:note]
-    p.save
+    @picture = Picture.find_by_id(params[:id])
+    @picture.url = params[:url]
+    @picture.note = params[:note]
+    if @picture.save
+      redirect_to picture_url(@picture)
+    else
+      render 'edit'
+    end
+  end
+  
+  
+  def index
+    @pictures = Picture.all
     
-    redirect_to "/pictures/#{p.id}"
+    respond_to do |format|
+      format.html 
+      format.json do
+        render :json => @pictures
+      end
+    end
+    
   end
   
   def new
+    @picture = Picture.new
   end
-  
+
   def create
-    p = Picture.new
-    p.url = params[:url]
-    p.note = params[:note]
-    p.save
-    
-    redirect_to "/pictures"
+    @picture = Picture.new
+    @picture.url = params[:url]
+    @picture.note = params[:note]
+    if @picture.save
+      redirect_to new_picture_url
+    else
+      render 'new'
+    end
   end
   
   def destroy
     p = Picture.find_by_id(params[:id])
     p.destroy
     
-    redirect_to "/pictures"
+    redirect_to pictures_url
   end
-  
-  def index
-    @pictures = Picture.all
-  end
-  
   def show
     @picture = Picture.find_by_id(params[:id])
   end

@@ -1,11 +1,11 @@
 <ul>
   <% @pictures.each do |pic| %>
     <li>
-      <%= link_to(image_tag(pic.url, :width => 150), "/pictures/#{pic.id}") %>
+      <%= link_to(image_tag(pic.url, :width => 150), picture_url(pic)) %>
       <p>
-        <%= link_to "Details", "/pictures/#{pic.id}" %>
-        <%= link_to "Delete",  "/pictures/#{pic.id}", :method => :delete, :confirm => "Dude, are you sure?" %>
-        <%= link_to "Edit",    "/pictures/#{pic.id}/edit" %>
+        <%= link_to "Details", picture_path(pic) %>
+        <%= link_to "Delete",  picture_path(pic), :method => :delete, :confirm => "Dude, are you sure?" %>
+        <%= link_to "Edit",    edit_picture_path(pic) %>
       </p>
     </li>
   <% end %>

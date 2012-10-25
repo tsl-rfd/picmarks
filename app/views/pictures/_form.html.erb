@@ -1,0 +1,12 @@
+<p><%= @picture.errors.full_messages %></p>
+
+<h1>Enter Your Info:</h1>
+
+<%= form_for @picture do |f| %>
+  
+  <%= f.label :url, "URL:" %><%= f.text_field :url %>
+  <%= f.label :note, "Note:" %><%= f.text_field :note %>
+  
+  <%= f.submit %>
+  
+<% end %>

@@ -1,12 +1,17 @@
 Picmarks::Application.routes.draw do
   
-  get  '/pictures',     :controller => 'Pictures', :action => 'index'
-  post '/pictures',     :controller => 'Pictures', :action => 'create'
-  get  '/pictures/new', :controller => 'Pictures', :action => 'new'  
+  get  '/pictures' => 'Pictures#index', :as => 'pictures'
   
-  get    '/pictures/:id',      :controller => 'Pictures', :action => 'show'
+  post '/pictures', :controller => 'Pictures', :action => 'create'
+  
+  get  '/pictures/new' => 'pictures#new', :as => 'new_picture'  
+  get  '/pictures/:id' => 'pictures#show', :as => 'picture'
+  
+  
+    
   delete '/pictures/:id',      :controller => 'Pictures', :action => 'destroy'
   put    '/pictures/:id',      :controller => 'Pictures', :action => 'update'
-  get    '/pictures/:id/edit', :controller => 'Pictures', :action => 'edit'
+
+  get    '/pictures/:id/edit' => 'pictures#edit', :as => 'edit_picture'
   
 end
